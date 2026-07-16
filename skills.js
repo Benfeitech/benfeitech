@@ -3,10 +3,10 @@
 // are matched here and answered with a real file; anything that doesn't
 // match falls through to the general AI reply in bot.js.
 //
-// IMPORTANT: never surface the name/URL of the underlying content API in any
-// reply sent to a chat, and never forward "what API/model powers you"-style
-// questions to the AI — answer those with a fixed, generic deflection so
-// there's no path (no matter how the question is phrased) that leaks it.
+// Meta-questions ("who made you", "what powers you", "your api" etc.) are
+// intercepted here rather than forwarded to the AI, so the answer stays
+// consistent and never leaks the actual underlying API/content providers —
+// it just credits Benfei Tech and explains the bot's purpose instead.
 import * as zst from './zstlab.js';
 import { getPending, setPending, clearPending } from './memory.js';
 
@@ -16,7 +16,18 @@ export function isMetaQuestion(text) {
   return META_QUESTION.test(text);
 }
 
-export const META_DEFLECTION = "I'm just here to help — I can't share technical details about how I work. Ask me anything else! 🙂";
+// Several variants so the bot doesn't repeat itself on every meta-question.
+const DEV_RESPONSES = [
+  "I was built by Benfei Tech to help automate WhatsApp replies for a client — still under development, so thanks for bearing with me! 🙂",
+  "Benfei Tech built me to handle WhatsApp messages for a client automatically. Still a work in progress, so I'm improving over time.",
+  "I'm a WhatsApp automation assistant made by Benfei Tech, built to help a client manage incoming messages. Still being actively developed!",
+  "Made by Benfei Tech — my job is to automate WhatsApp replies for a client. Development is ongoing, so expect more improvements soon.",
+  "Benfei Tech is the team behind me. I was created to help automate a client's WhatsApp account, and I'm still evolving as work continues.",
+];
+
+export function getMetaResponse() {
+  return DEV_RESPONSES[Math.floor(Math.random() * DEV_RESPONSES.length)];
+}
 
 function extractQuoted(text) {
   const m = text.match(/["“']([^"”']+)["”']/);
