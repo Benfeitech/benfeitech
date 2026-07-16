@@ -45,19 +45,20 @@ export function isCommand(text) {
   return typeof text === 'string' && text.trim().startsWith(PREFIX) && text.trim().length > 1;
 }
 
-const MENU = `*Bot commands* _(only you can use these)_
+const MENU = `╭━━〔 ⚙️ ʙᴏᴛ ᴄᴏɴᴛʀᴏʟs 〕━━┈⊷
+┃✫✧│ ${PREFIX}ping - ᴄʜᴇᴄᴋ ʙᴏᴛ ɪs ᴀʟɪᴠᴇ
+┃✫✧│ ${PREFIX}status - ᴜᴘᴛɪᴍᴇ & sᴇᴛᴛɪɴɢs
+┃✫✧│ ${PREFIX}ai on|off - ᴛᴏɢɢʟᴇ ᴀɪ ʀᴇᴘʟɪᴇs
+┃✫✧│ ${PREFIX}voice on|off - ᴛᴏɢɢʟᴇ ᴠᴏɪᴄᴇ ɴᴏᴛᴇs
+┃✫✧│ ${PREFIX}reset - ᴄʟᴇᴀʀ ᴄʜᴀᴛ ᴍᴇᴍᴏʀʏ
+┃✫✧│ ${PREFIX}menu - sʜᴏᴡ ᴛʜɪs ᴍᴇɴᴜ
+╰━━━━━━━━━━━━━━━┈⊷
 
-${PREFIX}ping — check the bot is alive and see reply latency
-${PREFIX}status — connection uptime & current settings
-${PREFIX}ai on|off — turn AI auto-replies to others on/off
-${PREFIX}voice on|off — turn voice-note replies on/off
-${PREFIX}reset — clear this chat's AI conversation memory
-${PREFIX}menu — show this list
+ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇɴғᴇɪ ᴛᴇᴄʜ`;
 
-_Everyone else (no command needed) can just ask in plain language for a wallpaper, a YouTube search/video, a book search, a styled text image, a waifu picture, or a shortened link._`;
-
-// `clearHistory` and `startedAt` are injected by bot.js so this module stays
-// stateless with respect to sockets/timers.
+// `startedAt` is injected by bot.js so this module stays stateless with
+// respect to sockets/timers. `clearHistory` is accepted for forward
+// compatibility but is a no-op unless a memory module is wired in later.
 export function handleCommand(text, { phoneNumber, startedAt, clearHistory }) {
   const [cmdRaw, ...args] = text.trim().slice(PREFIX.length).split(/\s+/);
   const cmd = cmdRaw.toLowerCase();
