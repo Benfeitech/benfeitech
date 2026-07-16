@@ -11,7 +11,7 @@ import fs from 'fs';
 import path from 'path';
 import { getSettings, isCommand, handleCommand } from './commands.js';
 import { getHistory, pushHistory, clearHistory } from './memory.js';
-import { routeSkill, isMetaQuestion, META_DEFLECTION } from './skills.js';
+import { routeSkill, isMetaQuestion, getMetaResponse } from './skills.js';
 
 // ffmpeg-static only ships Linux/macOS/Windows binaries. On Termux (Android),
 // skip it and let fluent-ffmpeg use the native `ffmpeg` installed via `pkg install ffmpeg`.
@@ -262,7 +262,7 @@ export async function startWhatsAppSession(phoneNumber, { onPairingCode, onConne
     // Meta-questions about how the bot is built are deflected before anything
     // else touches them — never forwarded to a skill or the AI.
     if (isMetaQuestion(text)) {
-      await sock.sendMessage(jid, { text: META_DEFLECTION });
+  await sock.sendMessage(jid, { text: getMetaResponse() });
       return;
     }
 
