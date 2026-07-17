@@ -12,6 +12,7 @@ const PREFIX = '.';
 const DEFAULT_SETTINGS = {
   aiEnabled: true,
   voiceReplies: true,
+  publicMode: false, // false = owner-only commands (default), true = anyone can use commands, in any chat
 };
 
 const settingsCache = new Map(); // phoneNumber -> settings object
@@ -51,6 +52,7 @@ const MENU = `╭━━〔 ⚙️ ʙᴏᴛ ᴄᴏɴᴛʀᴏʟs 〕━━┈⊷
 ┃✫✧│ ${PREFIX}ai on|off - ᴛᴏɢɢʟᴇ ᴀɪ ʀᴇᴘʟɪᴇs
 ┃✫✧│ ${PREFIX}voice on|off - ᴛᴏɢɢʟᴇ ᴠᴏɪᴄᴇ ɴᴏᴛᴇs
 ┃✫✧│ ${PREFIX}reset - ᴄʟᴇᴀʀ ᴄʜᴀᴛ ᴍᴇᴍᴏʀʏ
+┃✫✧│ ${PREFIX}public on|off - ᴛᴏɢɢʟᴇ ᴘᴜʙʟɪᴄ ᴄᴏᴍᴍᴀɴᴅs
 ┃✫✧│ ${PREFIX}menu - sʜᴏᴡ ᴛʜɪs ᴍᴇɴᴜ
 ╰━━━━━━━━━━━━━━━┈⊷
 
@@ -95,6 +97,16 @@ export function handleCommand(text, { phoneNumber, startedAt, clearHistory }) {
       settings.voiceReplies = v;
       saveSettings(phoneNumber, settings);
       return { reply: `Voice-note replies turned *${args[0]}*.` };
+    }
+
+    case 'public': {
+      const v = onOff(args[0]);
+      if (v === undefined) return { reply: `Usage: ${PREFIX}public on|off` };
+      settings.publicMode = v;
+      saveSettings(phoneNumber, settings);
+      return {
+        reply: `Public mode turned *${args[0]}* — ${v ? 'anyone can now use commands, in any chat' : 'only you can use commands now'}.`,
+      };
     }
 
     case 'reset':
