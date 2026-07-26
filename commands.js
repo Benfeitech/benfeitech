@@ -150,47 +150,53 @@ const COMPLIMENTS = ['has great taste.', 'lights up the room.', 'is sharper than
 
 function buildMenu({ pushName, publicMode }) {
   const timeStr = new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
-  return `*${BOT_NAME}*
-Version: ${BOT_VERSION}
-Owner: ${BOT_OWNER}
-User: ${pushName || 'Unknown'}
-Mode: ${publicMode ? 'Public' : 'Private'}
-Time: ${timeStr}
+  return `╭━━〔 🤖 ʙᴏᴛ ɪɴғᴏ 〕━━┈⊷
+┃✫✧│ ɴᴀᴍᴇ: ${BOT_NAME}
+┃✫✧│ ᴏᴡɴᴇʀ: ${BOT_OWNER}
+┃✫✧│ ᴠᴇʀsɪᴏɴ: ${BOT_VERSION}
+┃✫✧│ ᴜsᴇʀ: ${pushName || 'Unknown'}
+┃✫✧│ ᴍᴏᴅᴇ: ${publicMode ? 'Public' : 'Private'}
+┃✫✧│ ᴛɪᴍᴇ: ${timeStr}
+╰━━━━━━━━━━━━━━━┈⊷
 
-*Owner Commands*
-${PREFIX}tagall - mention everyone in the group
-${PREFIX}react <emoji> - react to a replied message
-${PREFIX}public on|off - toggle public/private mode
-${PREFIX}groupinfo - show group name, description, member count
-${PREFIX}invitelink - get the group's invite link
-${PREFIX}kick @user - remove a group member (admin only)
-${PREFIX}promote @user - make someone a group admin (admin only)
-${PREFIX}demote @user - remove someone's admin status (admin only)
+👋 ʜɪ ${pushName || 'UNKNOWN'}!
 
-*Fun Commands*
-${PREFIX}ai <question> - ask the AI
-${PREFIX}tts <text> - convert text to a voice note
-${PREFIX}8ball <question>
-${PREFIX}roll
-${PREFIX}flip
-${PREFIX}joke
-${PREFIX}fact
-${PREFIX}quote
-${PREFIX}ship @user1 @user2
-${PREFIX}rate <anything>
-${PREFIX}compliment @user
-${PREFIX}calc <expression>
-${PREFIX}qr <text or link>
-${PREFIX}time
-${PREFIX}pp @user
-${PREFIX}poll Question | Option 1 | Option 2
-${PREFIX}location <lat> <long>
-${PREFIX}vcf
-${PREFIX}sticker (reply to an image/video)
-${PREFIX}toimg (reply to a sticker)
-${PREFIX}forward <number> (reply to a message)
-${PREFIX}pin / ${PREFIX}unpin (reply to a message)
-${PREFIX}edit <new text> (reply to the bot's own message)`;
+╭━━〔 👑 ᴏᴡɴᴇʀ ᴄᴏᴍᴍᴀɴᴅs 〕━━┈⊷
+┃✫✧│ ${PREFIX}tagall - ᴍᴇɴᴛɪᴏɴ ᴇᴠᴇʀʏᴏɴᴇ ɪɴ ᴛʜᴇ ɢʀᴏᴜᴘ
+┃✫✧│ ${PREFIX}react <emoji> - ʀᴇᴀᴄᴛ ᴛᴏ ᴀ ʀᴇᴘʟɪᴇᴅ ᴍᴇssᴀɢᴇ
+┃✫✧│ ${PREFIX}public on|off - ᴛᴏɢɢʟᴇ ᴘᴜʙʟɪᴄ/ᴘʀɪᴠᴀᴛᴇ ᴍᴏᴅᴇ
+┃✫✧│ ${PREFIX}groupinfo - sʜᴏᴡ ɢʀᴏᴜᴘ ɴᴀᴍᴇ, ᴅᴇsᴄʀɪᴘᴛɪᴏɴ, ᴍᴇᴍʙᴇʀ ᴄᴏᴜɴᴛ
+┃✫✧│ ${PREFIX}invitelink - ɢᴇᴛ ᴛʜᴇ ɢʀᴏᴜᴘ'ꜱ ɪɴᴠɪᴛᴇ ʟɪɴᴋ
+┃✫✧│ ${PREFIX}kick @user - ʀᴇᴍᴏᴠᴇ ᴀ ɢʀᴏᴜᴘ ᴍᴇᴍʙᴇʀ (ᴀᴅᴍɪɴ ᴏɴʟʏ)
+┃✫✧│ ${PREFIX}promote @user - ᴍᴀᴋᴇ sᴏᴍᴇᴏɴᴇ ᴀ ɢʀᴏᴜᴘ ᴀᴅᴍɪɴ (ᴀᴅᴍɪɴ ᴏɴʟʏ)
+┃✫✧│ ${PREFIX}demote @user - ʀᴇᴍᴏᴠᴇ sᴏᴍᴇᴏɴᴇ'ꜱ ᴀᴅᴍɪɴ sᴛᴀᴛᴜs (ᴀᴅᴍɪɴ ᴏɴʟʏ)
+╰━━━━━━━━━━━━━━━┈⊷
+
+╭━━〔 🎮 ғᴜɴ ᴄᴏᴍᴍᴀɴᴅs 〕━━┈⊷
+┃✫✧│ ${PREFIX}ai <question> - ᴀsᴋ ᴛʜᴇ ᴀɪ
+┃✫✧│ ${PREFIX}tts <text> - ᴄᴏɴᴠᴇʀᴛ ᴛᴇxᴛ ᴛᴏ ᴀ ᴠᴏɪᴄᴇ ɴᴏᴛᴇ
+┃✫✧│ ${PREFIX}8ball <question>
+┃✫✧│ ${PREFIX}roll
+┃✫✧│ ${PREFIX}flip
+┃✫✧│ ${PREFIX}joke
+┃✫✧│ ${PREFIX}fact
+┃✫✧│ ${PREFIX}quote
+┃✫✧│ ${PREFIX}ship @user1 @user2
+┃✫✧│ ${PREFIX}rate <anything>
+┃✫✧│ ${PREFIX}compliment @user
+┃✫✧│ ${PREFIX}calc <expression>
+┃✫✧│ ${PREFIX}qr <text or link>
+┃✫✧│ ${PREFIX}time
+┃✫✧│ ${PREFIX}pp @user
+┃✫✧│ ${PREFIX}poll Question | Option 1 | Option 2
+┃✫✧│ ${PREFIX}location <lat> <long>
+┃✫✧│ ${PREFIX}vcf
+┃✫✧│ ${PREFIX}sticker (reply to an image/video)
+┃✫✧│ ${PREFIX}toimg (reply to a sticker)
+┃✫✧│ ${PREFIX}forward <number> (reply to a message)
+┃✫✧│ ${PREFIX}pin / ${PREFIX}unpin (reply to a message)
+┃✫✧│ ${PREFIX}edit <new text> (reply to the bot's own message)
+╰━━━━━━━━━━━━━━━┈⊷`;
 }
 
 export async function handleCommand(text, { sock, msg, jid, phoneNumber, senderJid }) {
