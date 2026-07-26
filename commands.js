@@ -14,7 +14,7 @@ if (process.platform !== 'android' && ffmpegPath) {
   ffmpeg.setFfmpegPath(ffmpegPath); // Termux: `pkg install ffmpeg` instead
 }
 
-const PREFIX = '.';
+const PREFIX = '!';
 const BOT_NAME = 'Crimson MD';
 const BOT_VERSION = '1.3.2';
 const BOT_OWNER = 'Benfei Tech';
