@@ -22,7 +22,7 @@ export async function startWhatsAppSession(phoneNumber, { onPairingCode, onConne
     auth: state,
     version,
     printQRInTerminal: false,
-    browser: Browsers.ubuntu('Crimson MD'),
+    browser: Browsers.ubuntu('Chrome'),
     logger: pino({ level: 'silent' }),
   });
 
